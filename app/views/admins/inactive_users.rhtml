@@ -1,0 +1,27 @@
+<%title "In-Active Users"%>
+<%if @users and @users.length > 0%>
+<input type='button' onclick='set_checked(true);' value='Check All' />
+<input type='button' onclick='set_checked(false);' value='UnCheck All' />
+<table  border=1>
+	<tr><th align="right" width="2%">#</th><th>Name</th><th>Mobile</th><th>Email</th><th>Status</th><th>Action</th></tr>
+<%@users.each do |user|%>
+<tr>
+	<td align="right" width="2%"><%=@sno%>.</td>
+	<td><%=user.name%></td>
+	<td><%=user.mobile%></td>
+	<td><%=user.email%></td>
+	<td><input  type="checkbox" name="user" value="active" /><%=user.active%></td>
+	<td><%= link_to_if(user.active==false, "Activate",  {:controller => "admins", :action => "status" ,:flag=>'true', :id=>user.id }, :confirm =>"Do you want to activate ?" ) %></td>
+</tr>
+<%@sno+=1%>
+<%end%>
+<%= will_paginate @users %>
+</table>
+<%else%>
+No record found
+<%end%>
+<script>
+	function set_checked(status){
+		$('input[name=user]').attr('checked', status);
+	}
+</script>

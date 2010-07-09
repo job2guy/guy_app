@@ -1,0 +1,33 @@
+<%title "Account Information"%>
+<%= link_to 'Edit', edit_account_path(:flag=>params[:flag]) %>|<%=link_to 'Logout' , logout_path%>
+<p>
+  <b>Login Name:</b>
+  <%=h @user.login %>
+</p>
+<p>
+  <b>Name:</b>
+  <%=h @user.name %>
+</p>
+<p>
+  <b>Mobile:</b>
+  <%=h @user.mobile %>
+</p>
+<p>
+  <b>email:</b>
+  <%=h @user.email %>
+</p>
+<p>
+  <b>Login count:</b>
+  <%=h @user.login_count %>
+</p>
+
+<p>
+  <b>Last login ip:</b>
+  <%=h @user.last_login_ip %>
+</p>
+
+<p>
+  <b>Current login ip:</b>
+  <%=h @user.current_login_ip %>
+</p>
+<%= link_to 'Back' ,@url_path %>

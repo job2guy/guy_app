@@ -1,0 +1,15 @@
+<%title "Account Activation!"%>
+  <% form_for @user, :url => activate_path(@user.id), :html => { :method => :post } do |form| %>
+  <table>
+  	<tr><td colspan=2><%= form.error_messages %></td></tr>
+  	<tr><td>Name :</td><td><%=@user.name%></td></tr>
+  	<tr><td>Mobile: </td><td><%=@user.mobile%></td></tr>
+	<tr><td>email:</td><td><%=@user.email%></td></tr>
+	<tr><td>Role:</td><td><%=collection_select :role,:id, Role.all, :id, :title, :prompt => "Select a Role" ,:id=>"role_id"%><span id="role_err"></span></td></tr>
+	<tr><td colspan=2><%= form.submit "Activate" %></td></tr>
+  </table>
+  <% end %>
+<script>
+	var role = new LiveValidation( "role_id",{ validMessage: "",insertAfterWhatNode: "role_err"});
+	role.add( Validate.Presence,{failureMessage: "Role can't be empty!"}  ); 
+</script>

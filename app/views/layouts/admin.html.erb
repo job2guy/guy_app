@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= h(yield(:title) || "Admin") %></title>
+    <%= stylesheet_link_tag 'application' ,'livevalidation','jquery.message','menu','paginate'%>
+	<%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails' ,'application' ,'livevalidation','jquery.message','menu'%>
+    <%= yield(:head) %>
+  </head>
+  <body>
+  	<div id="container">
+  		
+	<div id="menu">
+       <ul class="menu">
+           <li><a href="/admins" class="parent"><span>Home</span></a>
+           </li>
+           <li><a href="#"><span>CRUD</span></a>
+		   <div><ul>
+                   <li><a href="<%=languages_url%>" ><span>Languages</span></a></li>
+				   <li><a href="<%=roles_url%>" ><span>Role</span></a></li>
+               </ul></div>
+		   </li>
+		    <li><a href="#"><span>Users</span></a>
+			<div><ul>
+                   <li><a href="/admins/active_users"><span>Active</span></a></li>
+				   <li><a href="/admins/inactive_users"><span>In-Active</span></a></li>
+               </ul></div>
+			</li>
+			<li><a href="#"><span>View</span></a>
+				<div><ul>
+				   <li><a href="/admins/list_view?flag=guys" ><span>Close Friend</span></a></li>
+                   <li><a href="/admins/list_view?flag=hr" ><span>HR</span></a></li>
+				   <li><a href="/admins/list_view?flag=friend" ><span>Friend</span></a></li>
+				   <li><a href="/admins/list_view?flag=relative" ><span>Relative</span></a></li>
+				   <li><a href="/admins/list_view?flag=member"><span>Member</span></a></li>
+				   <li><a href="/admins/comment"><span>Comments</span></a></li>
+               </ul></div>
+           	</li>
+			 <li><a href="<%=account_path.to_s+'?flag=admin'%>"><span>My Profile</span></a></li>
+		     <li class="last"><a href="/logout"><span>Logout</span></a></li>
+       </ul>
+   </div>
+<br/><br/>    
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%- end -%>
+      
+      <%- if show_title? -%>
+        <h3><%=h yield(:title) %></h3>
+      <%- end -%>
+      
+      <%= yield %>
+	 
+    </div>
+  </body>
+</html>
+<script>
+$(function() {
+	$().message("<b>Developed by Prabu in Ruby on Rails</b>");
+});
+</script>

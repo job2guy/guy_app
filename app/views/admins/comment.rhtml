@@ -1,0 +1,10 @@
+<%title "Comments"%>
+   <% for user in @users %>
+      <%= user.name %><br/><br/>
+	  <ul>
+	  <% user.comments(:all,:order=>"created_at desc").each do|comment|%>
+	  <li><%=comment.body%> | <%=comment.created_at.strftime("%d-%m-%Y")%></li>
+	  <%end %>
+		</ul>
+      <hr />
+<% end %>

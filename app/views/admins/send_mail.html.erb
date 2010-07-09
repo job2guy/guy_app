@@ -1,0 +1,9 @@
+<%form_tag({:action => 'post',:flag=>params[:flag]}) do%>
+
+<table><tr><td>
+Mail To   : </td><td><%=text_field_tag "to" ,@to%></td></tr>
+<tr><td>subject  : </td><td><%=text_field_tag "sub",@sub%></td></tr>
+<tr><td>Message:</td><td><%=text_area_tag (:message, nil, :size => "44x6") %></td></tr><tr><td colspan=2>
+<%=submit_tag "Send"%></td></tr>
+</table>
+<%end%>

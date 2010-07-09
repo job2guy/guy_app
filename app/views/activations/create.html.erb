@@ -1,0 +1,11 @@
+<%title "Activation completed"%>
+<% form_for @user, :url => activate_path(@user.id).to_s + "?flag='confirm'", :html => { :method => :post} do |form| %>
+  	<%= form.error_messages %><br/><br/>
+  	<%= render :partial => "form", :locals => { :form => form }%><br/>
+	Known/Experience in<br/><br/>  <%=collection_select :language,:id, Language.all, :id, :title, :prompt => "Select a Language",:id=>"language_id" %><span id="lan_error"></span><br/><br/>
+  	<%= form.submit "Submit" %><br/>
+<% end %>
+<script>
+	var lan = new LiveValidation( "language_id",{ validMessage: "",insertAfterWhatNode: "lan_error"});
+	lan.add( Validate.Presence,{failureMessage: "Language can't be empty!"}  ); 
+</script>

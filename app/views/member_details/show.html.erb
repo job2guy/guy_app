@@ -1,0 +1,30 @@
+<%title "View Detail" %>
+<p>
+	Name : <%=@member_detail.user.name.capitalize%>
+</p>
+<p>
+	DOB : <%=@member_detail.dob.strftime("%d-%m-%Y")%>
+</p>
+<p>
+	Address : <%=@member_detail.address%>
+</p>
+<p>
+	Qualification : <%=@member_detail.qualification%>
+</p>
+<p>
+	Mail : <%=@member_detail.user.email%>
+</p>
+<p>
+	Knowledge in : <%=@member_detail.user.language.title%>
+</p>
+<p>
+	Job Status  : 
+	<%if @member_detail.job_status%>Looking for a Job</p>
+	<p>Resume link : <%=@member_detail.resume%></p>
+		<%if @member_detail.work_status%><p>Work Experiance :  <%=@member_detail.lang_experiance%>  in <%=@member_detail.company_name.capitalize%></p><%end%>
+	<%else%>
+	Not looking for a Job</p>
+	<%end%>
+
+<%= link_to 'Edit', new_member_detail_path %> |
+<%= link_to 'Back', member_details_path %>

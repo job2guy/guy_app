@@ -1,0 +1,11 @@
+<% title "Register" %>
+<font size=3 color="#6D6968">Already have an account?<%=link_to image_tag('/images/login.png' , :size=> '80x40',:title=>'Login'), login_path %> here</font></br></br>
+
+<% form_for @user, :url => signup_path do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+
+	<div>  
+		<%= f.submit "Register" %>
+	</div>
+<% end %>

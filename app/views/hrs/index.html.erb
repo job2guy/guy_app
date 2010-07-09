@@ -1,0 +1,24 @@
+<p>
+<div class="scroll">
+<table border=1 width="85%">
+	<tr><th colspan="6">Fresher List</th></tr>
+	<%if @member_detail_freshers and @member_detail_freshers.length >0 %>
+	<tr><th align="right" width="2%">#</th><th>Name</th><th>Mobile</th><th>Email</th><th>Known Language</th><th>Resume Link</th></tr>
+	<%for member in @member_detail_freshers%>
+	<tr>
+		<td align="right" width="2%"><%=@sno%>.</td>
+		<td><%=member.user.name%></td>
+		<td align="right"><%=member.user.mobile%></td>
+		<td><%=member.user.email%></td>
+		<td><%=member.user.language.title%></td>
+		<td><%=member.resume%></td>
+	</tr>
+	<%@sno+=1%>
+	<%end%>
+	<%= will_paginate @member_detail_freshers %>
+	<%else%>
+	<tr><td colspan=6>No record found</td></tr>
+	<%end%>
+</table>
+</div>
+</p>

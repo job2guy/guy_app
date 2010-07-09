@@ -1,0 +1,26 @@
+<p>
+<div class="scroll">
+	<table border=1 width="85%">
+	<%if @member_detail_experiance and @member_detail_experiance.length >0 %>
+	<%= will_paginate @member_detail_experiance %>
+	<tr><th colspan="7">Experiance List</th></tr>
+	<tr><th align="right" width="2%">#</th><th>Name</th><th>Mobile</th><th>Email</th><th>Known Language</th><th>Resume Link</th><th>Details</th></tr>
+	<%for member in @member_detail_experiance%>
+	<tr>
+		<td align="right" width="2%"><%=@sno%>.</td>
+		<td><%=member.user.name%></td>
+		<td align="right"><%=member.user.mobile%></td>
+		<td><%=member.user.email%></td>
+		<td><%=member.user.language.title%></td>
+		<td><%=member.resume%></td>
+		<td><%=member.lang_experiance%></td>
+	</tr>
+	<%@sno+=1%>
+	<%end%>
+<%else%>
+	<tr><th colspan="7">Experiance List</th></tr>
+	<tr><td colspan=7>No record found</td></tr>
+<%end%>
+	</table>
+</div>
+</p>

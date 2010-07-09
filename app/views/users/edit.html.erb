@@ -1,0 +1,22 @@
+<%title "Edit My Account"%>
+
+<% form_for @user, :url => account_url(:flag=>params[:flag]) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+  
+  <div>
+	<%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
+	<%= f.password_field :password %><br />
+</div>	
+
+<div>
+	<%= f.label :password_confirmation %><br />
+	<%= f.password_field :password_confirmation %><br />
+</div>
+	<div>
+	  <%= f.submit "Update" %>
+	</div>
+<% end %>
+
+<br />
+<%= link_to "My Profile", account_path(:flag=>params[:flag])%>

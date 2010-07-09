@@ -1,0 +1,21 @@
+<%title "List of ".to_s + @role.title%>
+<div id="mail_id"></div>
+<%if @users and @users.length > 0%>
+<table border=1 width="60%">
+	<tr><th align="right" width="2%">#</th><th>Name</th><th>Mobile</th><th>Email</th><th>Action</th></tr>
+	<%@users.each do |user|%>
+	<tr>
+		<td align="right" width="2%"><%=@sno%>.</td>
+		<td><%=user.name%></td>
+		<td align="right"><%=user.mobile%></td>
+		<td><%=user.email%></td>
+		<td align="center"><%=link_to_remote "Mailto" ,:update=>"mail_id",:url=>{:controller=>"admins",:action=>"send_mail" ,:mail=>user.email,:name=>user.name,:flag=>params[:flag] }%>
+			<%#=link_to "Mailto" ,:controller=>"admins",:action=>"send_mail" ,:mail=>user.email,:name=>user.name %></td>
+	</tr>
+	<%@sno+=1%>
+	<%end%>
+<%= will_paginate @users %>
+</table>
+<%else%>
+No record found
+<%end%>

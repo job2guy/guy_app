@@ -1,0 +1,7 @@
+<%title "Show Role"%>
+<p>
+Name:	<%=@role.name%><br/>
+Title:	<%=@role.title%><br/>
+</p>
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>

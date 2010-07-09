@@ -1,0 +1,20 @@
+<%title "Change My Password"%>
+
+<% form_for @user, :url => password_reset_path, :method => :put do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :password %><br />
+  <%= f.password_field :password ,:id=>"password_id"%><span id="passworderror"></span><br />
+  <br />
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation ,:id=>"confirmpassword_id"%><span id="confirmerror"></span><br />
+  <br />
+  <%= f.submit "Update my password and log me in" %>
+<% end %>
+<script>
+	var pwd = new LiveValidation( "password_id",{ validMessage: "",insertAfterWhatNode: "passworderror"});
+	pwd.add( Validate.Presence,{failureMessage: "Password can't be blank"}  ); 
+	
+	var password = new LiveValidation('confirmpassword_id',{ validMessage: "",insertAfterWhatNode: "confirmerror"});
+	password.add( Validate.Confirmation, { match: 'password_id' } );
+
+</script>

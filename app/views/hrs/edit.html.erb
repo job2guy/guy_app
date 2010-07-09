@@ -1,0 +1,16 @@
+<h1>Editing hr</h1>
+
+<% form_for(@hr) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :references %><br />
+    <%= f.text_field :references %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @hr %> |
+<%= link_to 'Back', hrs_path %>

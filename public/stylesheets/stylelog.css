@@ -1,0 +1,250 @@
+@charset "utf-8";
+body {
+	margin-left: 0px;
+	margin-right: 0px;
+	background-color: #616161;
+}
+#layer01_holder {
+	width:563px;
+	height:157px;
+	margin:auto;
+}
+#layer01_holder #left {
+	background-image:url(/images/login/loginpage_02.jpg);
+	background-repeat:no-repeat;
+	width:96px;
+	height:157px;
+	float:left;
+	display:block;
+}
+#layer01_holder #center {
+	background-image:url(/images/login/loginpage_03.jpg);
+	background-repeat:no-repeat;
+	width:220px;
+	height:157px;
+	float:left;
+	display:block;
+}
+#layer01_holder #right {
+	background-image:url(/images/login/loginpage_04.jpg);
+	background-repeat:no-repeat;
+	width:247px;
+	height:157px;
+	float:left;
+	display:block;
+}
+#layer02_holder {
+	width:563px;
+	height:164px;
+	margin:auto;
+}
+#layer02_holder #left {
+	background-image:url(/images/login/loginpage_06.jpg);
+	background-repeat:no-repeat;
+	width:96px;
+	height:164px;
+	float:left;
+	display:block;
+}
+#layer02_holder #center {
+	background-image:url(/images/login/loginpage_07.jpg);
+	background-repeat:no-repeat;
+	width:220px;
+	height:164px;
+	float:left;
+	display:block;
+}
+#layer02_holder #right {
+	background-image:url(/images/login/loginpage_08.jpg);
+	background-repeat:no-repeat;
+	width:247px;
+	height:164px;
+	float:left;
+	display:block;
+}
+#layer03_holder {
+	width:563px;
+	height:124px;
+	margin:auto;
+}
+#layer03_holder #left {
+	background-image:url(/images/login/loginpage_09.jpg);
+	background-repeat:no-repeat;
+	width:96px;
+	height:124px;
+	float:left;
+	display:block;
+}
+#layer03_holder #center {
+	background-image:url(/images/login/loginpage_10.jpg);
+	background-repeat:no-repeat;
+	width:220px;
+	height:124px;
+	float:left;
+	display:block;
+	font-family: Verdana;
+	color: #FFFF00;
+	font-size: 12px;
+	font-weight: bold;
+}
+#layer03_holder #right {
+	background-image:url(/images/login/loginpage_11.jpg);
+	background-repeat:no-repeat;
+	width:247px;
+	height:124px;
+	float:left;
+	display:block;
+}
+#layer04_holder {
+	width:563px;
+	height:115px;
+	margin:auto;
+}
+#layer04_holder #left {
+	background-image:url(/images/login/loginpage_12.jpg);
+	background-repeat:no-repeat;
+	width:96px;
+	height:115px;
+	float:left;
+	display:block;
+}
+#layer04_holder #center {
+	background-image:url(/images/login/loginpage_13.jpg);
+	background-repeat:no-repeat;
+	width:220px;
+	height:115px;
+	float:left;
+	display:block;
+	text-align:left;
+	padding-top:35px;
+	margin-bottom:-35px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-family: Arial;
+}
+#layer04_holder #center a:link, a:visited {
+	color: #FFFF00;
+	text-decoration:none;
+}
+#layer04_holder #center a:hover {
+	color: #FF9900;
+	text-decoration:underline;
+}
+#layer04_holder #right {
+	background-image:url(/images/login/loginpage_14.jpg);
+	background-repeat:no-repeat;
+	width:247px;
+	height:115px;
+	float:left;
+	display:block;
+}
+#layer05_holder {
+	width:563px;
+	height:auto;
+	margin:auto;
+	color: #393939;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: center;
+	padding-left: 125px;
+	;
+}
+#layer03_holder #center form {
+	text-align:justify;
+	margin:0px;
+}
+#layer03_holder #center label {
+	font-size:10px;
+	color: #FFFFFF;
+}
+#layer03_holder #center input {
+	background-color:#454544;
+	border:solid 1px #d2d0b5;
+	color: #FFFFFF;
+}
+#layer03_holder #center #button {
+	margin-top:5px;
+	background-color: #CCCCCC;
+	border: 3px double #454544;
+	color: #454544;
+	margin-left: 169px;
+	right: 0px;
+	width: 50px;
+}
+
+a img {
+  border: none;
+}
+
+a {
+  color: #0000FF;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+#container {
+  width: 75%;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+}
+
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 8px;
+}
+
+#errorExplanation ul {
+  margin: 2px 24px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: disc;
+}
+

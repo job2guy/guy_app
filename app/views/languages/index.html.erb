@@ -1,0 +1,16 @@
+<%title "Listing languages"%>
+<table border=1>
+	  <tr><th>Name</th><th>Title</th><th colspan=2>Action</th>
+  </tr>
+<% @languages.each do |language| %>
+  <tr>
+  	<td><%=language.name.capitalize%></td>
+	<td><%=language.title%></td>
+    <td><%= link_to 'Edit', edit_language_path(language) %></td>
+    <td><%= link_to 'Destroy', language, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New language', new_language_path %>

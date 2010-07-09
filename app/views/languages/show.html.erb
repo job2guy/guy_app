@@ -1,0 +1,7 @@
+<%title "Show Language"%>
+<p>
+Name:	<%=@language.name%><br/>
+Title:	<%=@language.title%><br/>
+</p>
+<%= link_to 'Edit', edit_language_path(@language) %> |
+<%= link_to 'Back', languages_path %>

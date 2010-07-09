@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= h(yield(:title) || "Welcome") %></title>
+    <%= stylesheet_link_tag 'application' ,'livevalidation','jquery.message','sliding_effect','paginate'%>
+	<%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails' ,'application' ,'livevalidation','jquery.message','sliding_effect'%>
+		<link rel="Shortcut Icon" href="/images/favicon.ico">
+        <%= yield(:head) %>
+		<style type="text/css">
+		<!--
+		div.scroll {
+		height: 450px;
+		width: 100%;
+		overflow: auto;
+		border: 1px solid #666;
+		background-color: #ccc;
+		padding: 8px;
+		}
+		-->
+		</style> 
+    </head>
+    <body topmargin="0" leftmargin="0">
+        <div id="leftnav">
+			<div id="navigation-block">
+            <ul id="sliding-navigation">
+                <li class="sliding-element"><h3>Menu</h3></li>
+                <li class="sliding-element"><a href="<%=hrs_path%>">Home</a></li>
+				<li class="sliding-element"><a href="<%=fresh_list_path%>">Fresher</a></li>
+				<li class="sliding-element"><a href="<%=exp_list_path%>">Experience</a></li>
+                <li class="sliding-element"><a href="<%=account_path.to_s+'?flag=hr'%>">Profile</a></li>
+                <li class="sliding-element"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+			
+			<iframe width="200" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Erode,+Tamil+Nadu&amp;sll=9.915997,78.121847&amp;sspn=0.088607,0.154324&amp;ie=UTF8&amp;hq=&amp;hnear=Erode,+Tamil+Nadu&amp;ll=11.342213,77.727413&amp;spn=0.033662,0.034161&amp;z=13&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Erode,+Tamil+Nadu&amp;sll=9.915997,78.121847&amp;sspn=0.088607,0.154324&amp;ie=UTF8&amp;hq=&amp;hnear=Erode,+Tamil+Nadu&amp;ll=11.342213,77.727413&amp;spn=0.033662,0.034161&amp;z=13&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>        
+			
+		</div>
+		
+        <div id="content">
+        	
+            <p>
+                <%- if show_title? -%>
+                <h1><%=h yield(:title) %></h1>
+                <%- end -%>
+            </p>
+            <p>
+                <%- flash.each do |name, msg| -%>
+                <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                <%- end -%>
+          	</p>
+            <p>
+                <%= yield %>
+            </p>
+        </div>
+    </body>
+</html>
+
+<script>
+
+$(function() {
+	
+	$().message("<b>Developed by Prabu in Ruby on Rails</b>");
+});
+
+</script>

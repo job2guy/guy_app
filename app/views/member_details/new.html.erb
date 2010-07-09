@@ -1,0 +1,137 @@
+<%title "Personal Detail"%>
+<% form_for @member_detail,:url=>{:controller=>:member_details, :action=>:create},:html=>{:method=>:post} do |f| %>
+  <%= f.error_messages %>
+  <p>
+  	<%= f.label :dob ,"Date Of Birth"%><br/>
+	<%=f.date_select :dob , :order => [:day, :month, :year], :start_year => 1980, :end_year => 2000, :use_month_numbers => false,
+                                    :discard_day => false, :include_blank => true%><span id="dateerror"></span>
+  </p>
+  
+  <p>
+  	<%= f.label :age%><br/>
+	<%=f.text_field :age ,:size=>2 , :id=>'age_id' , :maxlength=>2%><span id="ageerror"></span>
+  </p>
+  
+  <p>
+  		<%= f.label :gender, "Gender" %><br />
+		<%  gm=true
+			gf=false
+		    if @gender=='female'
+			gf=true
+			gm=false
+			end%>
+	 	<%= f.radio_button :gender , 'male' ,:checked=>gm%>Male
+	 	<%= f.radio_button :gender , 'female',:checked=>gf %>Female
+  </p>
+  
+  <p>
+  	<%= f.label :qualification, "Qualification" %><br />
+    <%= f.text_field :qualification ,:size=>20 , :id=>'qualification_id',:maxlength=>50 %><span id="qualerror"></span>
+  </p>
+  <p>
+  	<%= f.label :address, "Address" %><br />
+    <%= f.text_area :address ,:rows=>4,:cols=>20 , :id=>'address_id'%><span id="addresserror"></span>
+  </p>
+  
+  <p>
+  	Knowledge in <br />
+	<%= select ("selected_language", "id", @languages.map {|u| [u.title,u.id,]}) %>
+	
+  </p>
+ 
+  <p>
+  	<%= f.label :job_status, "Are you looking for a job ?" %><br />
+	<%= f.radio_button :job_status , 'yes', :id=>"job_yes"%>Yes
+	<%= f.radio_button :job_status , 'no' , :id=>"job_no",:checked=>true%>No
+  </p>
+  
+  <div id="job_content">
+		<p>
+	  		<%= f.label :resume, "Resume Link" %><br />
+	    	<%= f.text_field :resume ,:size=>25 , :id=>'resume_id'%><span id="resumeerror"></span>
+	  	</p>
+		
+		<p>
+	  		<%= f.label :work_status, "Do you have any experiance ?" %><br />
+			<%= f.radio_button :work_status , 'yes', :id=>"work_yes"%>Yes
+			<%= f.radio_button :work_status , 'no' , :id=>"work_no" ,:checked=>true%>No
+	  	</p>
+		
+		<div id="work_content">
+			<p>
+	  			Enter Knowledge/Experiance about <%=@selected_language.title%><br />
+	    		<%= f.text_field :lang_experiance ,:size=>25 , :id=>'lang_id'%><span id="lanerror"></span>
+	  		</p>
+			
+			<p>
+	  			<%= f.label :company_name, "Company Name" %><br />
+	    		<%= f.text_field :company_name ,:size=>25 , :id=>'company_id'%><span id="comerror"></span>
+	  		</p>
+		</div>
+  </div>
+  
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', member_details_path %>
+
+<script>
+	var date1 = new LiveValidation('member_detail_dob_1i',{ validMessage: "",insertAfterWhatNode: "dateerror"});
+	date1.add( Validate.Presence,{failureMessage: "Year can't be blank"}  );
+	var date2 = new LiveValidation('member_detail_dob_2i',{ validMessage: "",insertAfterWhatNode: "dateerror"});
+	date2.add( Validate.Presence,{failureMessage: "Month can't be blank"}  );
+	var date3 = new LiveValidation('member_detail_dob_3i',{ validMessage: "",insertAfterWhatNode: "dateerror"});
+	date3.add( Validate.Presence,{failureMessage: "Date can't be blank"}  );
+	
+	var age = new LiveValidation('age_id',{ validMessage: "",insertAfterWhatNode: "ageerror"});
+	age.add( Validate.Presence,{failureMessage: "Age can't be blank"}  );
+	
+	var qual = new LiveValidation('qualification_id',{ validMessage: "",insertAfterWhatNode: "qualerror"});
+	qual.add( Validate.Presence,{failureMessage: "Qualication can't be blank"}  );
+	
+	var address = new LiveValidation('address_id',{ validMessage: "",insertAfterWhatNode: "addresserror"});
+	address.add( Validate.Presence,{failureMessage: "Address can't be blank"}  );
+	
+	var res = new LiveValidation('resume_id',{ validMessage: "",insertAfterWhatNode: "resumeerror"});
+	res.add( Validate.Presence,{failureMessage: "Resume link can't be blank"}  );
+	
+	var know = new LiveValidation('lang_id',{ validMessage: "",insertAfterWhatNode: "lanerror"});
+	know.add( Validate.Presence,{failureMessage: "Knowledge Experiance can't be blank"}  );
+	
+	var comp = new LiveValidation('company_id',{ validMessage: "",insertAfterWhatNode: "comerror"});
+	comp.add( Validate.Presence,{failureMessage: "Company can't be blank"}  );
+	
+	
+	
+	$('#job_yes').click(function(){
+		$('#job_content').show('slow');
+		$('#work_content').hide('slow');
+		res.enable();
+	});
+	$('#job_no').click(function(){
+		$('#work_content').hide('slow');
+		$('#job_content').hide('slow');
+		comp.disable();
+		know.disable();
+		res.disable();
+	});
+	$('#work_yes').click(function(){
+		$('#work_content').show('slow');
+		comp.enable();
+		know.enable();
+		res.enable();
+	});
+	$('#work_no').click(function(){
+		$('#work_content').hide('slow');
+	});
+	
+	 $(document).ready( function() { 
+		$('#job_content').hide();
+		$('#work_content').hide();
+		comp.disable();
+		know.disable();
+		res.disable();
+} )
+</script>
