@@ -35,7 +35,7 @@
   
   <p>
   	Knowledge in <br />
-	<%= select("selected_language", "id", @languages.map {|u| [u.title,u.id,]}) %>
+	<%= select ("selected_language", "id", @languages.map {|u| [u.title,u.id,]}) %>
 	
   </p>
  

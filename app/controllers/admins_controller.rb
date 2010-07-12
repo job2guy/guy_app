@@ -37,11 +37,12 @@ class AdminsController < ApplicationController
     end
   end
   def list_view
-    @sno=1
-    @sno=(@@per_page.to_i*params[:page].to_i)-(@@per_page.to_i-1) if params[:page] and params[:page]!=""
-    if params[:flag] and !params[:flag].empty?
+    begin
+      @sno=1
+      @sno=(@@per_page.to_i*params[:page].to_i)-(@@per_page.to_i-1) if params[:page] and params[:page]!=""
+      if params[:flag] and !params[:flag].empty?
       @role=Role.find_by_name(params[:flag])
-      @roleusers=RolesUser.find_all_by_role_id(@role.id)
+      @roleusers=RolesUser.find_all_by_role_id(@role.id) if @role and @role!=nil
       if @roleusers and @roleusers.length>0
         id_array=[]
         @roleusers.each do |user|
@@ -51,6 +52,10 @@ class AdminsController < ApplicationController
          @users=User.paginate :all,:conditions=>["active=? and id in(#{user_id})",true],:order=>"name",:page => params[:page], :per_page => @@per_page
       end
     end
+  rescue Exception => e
+     
+    end
+    
   end
   
   def send_mail
@@ -58,6 +63,7 @@ class AdminsController < ApplicationController
     @sub="Hello " + params[:name].capitalize
     render :layout=>false
   end
+  
   def post
     emailsender(params[:from],params[:to],params[:sub],params[:message])
     flash[:notice] ="Successfully send"

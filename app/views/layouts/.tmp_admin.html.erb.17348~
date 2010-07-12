@@ -36,7 +36,6 @@
 				   <li><a href="/admins/comment"><span>Comments</span></a></li>
                </ul></div>
            	</li>
-			<li><a href="/logs/show?flag=admin"><span>View Log</span></a></li>
 			 <li><a href="<%=account_path.to_s+'?flag=admin'%>"><span>My Profile</span></a></li>
 		     <li class="last"><a href="/logout"><span>Logout</span></a></li>
        </ul>

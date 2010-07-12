@@ -1,0 +1,14 @@
+<%title "Log Information"%>
+<p>Log size: <%= "%0.3f" % @log_size %>MB</p>
+<p>
+  <%= button_to "clear log", log_path, :method => :delete,
+    :confirm => "Are you sure you want to clear the log?" %> |
+  <%= link_to "backup log", backup_log_path %> |
+  <%= link_to "show all", log_path %> |
+  <%= link_to "show info", log_path(:filter => "info") %> |
+  <%= link_to "show warnings", log_path(:filter => "warn") %>
+</p>
+
+<pre>
+<%= @log_content %>
+</pre>

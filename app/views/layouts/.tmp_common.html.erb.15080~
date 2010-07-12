@@ -29,7 +29,7 @@
         	
             <p>
                 <%- if show_title? -%>
-                <h3><%=h yield(:title) %></h3>
+                <h1><%=h yield(:title) %></h1>
                 <%- end -%>
             </p>
             <p>

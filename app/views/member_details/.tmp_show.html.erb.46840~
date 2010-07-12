@@ -1,5 +1,4 @@
 <%title "View Detail" %>
-<h2>
 <p>
 	Name : <%=@member_detail.user.name.capitalize%>
 </p>
@@ -26,6 +25,6 @@
 	<%else%>
 	Not looking for a Job</p>
 	<%end%>
-</h2>
+
 <%= link_to 'Edit', new_member_detail_path %> |
 <%= link_to 'Back', member_details_path %>

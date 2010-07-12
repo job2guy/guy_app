@@ -3,7 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.fresh_list '/freshers', :controller => 'hrs', :action => 'index'
   map.exp_list '/experiance', :controller => 'hrs', :action => 'experience_list'
   #map.connect 'Mail_to',:controller=>"admins",:action=>"send_mail" 
-  
+  map.resource :log, :controller => "logs", :member => "backup"
+
   map.resources :member_details
   map.resources :roles
   map.resources :languages

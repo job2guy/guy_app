@@ -1,5 +1,6 @@
+require 'rubygems'
 class BlogsController < ApplicationController
-  layout "common"
+   layout "common"
   def comment
     if User.find(current_user.id).comments.create(params[:comment])
        flash[:notice] = "Added your comment"

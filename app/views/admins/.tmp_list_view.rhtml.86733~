@@ -1,4 +1,4 @@
-<%title "List of ".to_s + @role.title if @role and @role!=nil %>
+<%title "List of ".to_s + @role.title%>
 <div id="mail_id"></div>
 <%if @users and @users.length > 0%>
 <table border=1 width="60%">
