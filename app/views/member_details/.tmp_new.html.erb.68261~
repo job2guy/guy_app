@@ -49,7 +49,6 @@
 		<p>
 	  		<%= f.label :resume, "Resume Link" %><br />
 	    	<%= f.text_field :resume ,:size=>25 , :id=>'resume_id'%><span id="resumeerror"></span>
-			<pre>  Learn about shared document(<a href="http://google.about.com/od/toolsfortheoffice/ht/sharedochowto.htm">Click here</a>)</pre>
 	  	</p>
 		
 		<p>
@@ -97,10 +96,7 @@
 	
 	var res = new LiveValidation('resume_id',{ validMessage: "",insertAfterWhatNode: "resumeerror"});
 	res.add( Validate.Presence,{failureMessage: "Resume link can't be blank"}  );
-	res.add( Validate.Format,
-    { pattern: /^http:\/\//, failureMessage: "Please enter your resume shared document link!" }
-	);
-
+	
 	var know = new LiveValidation('lang_id',{ validMessage: "",insertAfterWhatNode: "lanerror"});
 	know.add( Validate.Presence,{failureMessage: "Knowledge Experiance can't be blank"}  );
 	
