@@ -67,7 +67,7 @@ class AdminsController < ApplicationController
   def post
     emailsender(params[:from],params[:to],params[:sub],params[:message])
     flash[:notice] ="Successfully send"
-    redirect_to :list_view ,:flag=>params[:flag]
+    redirect_to :controller=>"admins",:action=>:list_view ,:flag=>params[:flag]
   end
   
   def comment
