@@ -1,10 +1,20 @@
-<%title "Comments"%>
-   <% for user in @users %>
-      <%= user.name %><br/><br/>
-	  <ul>
-	  <% user.comments(:all,:order=>"created_at desc").each do|comment|%>
-	  <li><%=comment.body%> | <%=comment.created_at.strftime("%d-%m-%Y")%></li>
-	  <%end %>
-		</ul>
-      <hr />
-<% end %>
+<%title "Today's Comments"%>
+<%=link_to "View All Comments", all_comments_url%><br/><br/>
+<%if !@comment_presents.blank?%>
+	<%if !@users.blank?%>
+	   <% for user in @users %>
+	  		<b><%=user.name.capitalize%></b><br/>
+			<%@comment_presents=Comment.find(:all,:conditions=>["user_id=? and date(created_at)=?",user.id,Time.now.strftime("%Y-%m-%d")],:order=>"created_at desc")%>
+			<%if !@comment_presents.blank?%>
+				<ul>
+				<%for comment in @comment_presents%>
+					<li><%=truncate(comment.body, 50, "..... (more)")%> - <i><%=comment.created_at.strftime("%I:%M:%S %p")%></i></li>
+				<%end%>
+				</ul>
+			<%end%>
+	  		<hr />
+		<%end%>
+	<%end%>
+<%else%>
+	No Comment<br/><hr />
+<%end%>

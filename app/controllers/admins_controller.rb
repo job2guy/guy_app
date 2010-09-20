@@ -71,6 +71,11 @@ class AdminsController < ApplicationController
   end
   
   def comment
-    @users=User.find(:all,:conditions=>["active=true"])
+    @comment_presents=Comment.find(:all,:conditions=>["date(created_at)=?",Time.now.strftime("%Y-%m-%d")])
+    @users=User.find(:all,:conditions=>["id not in (1,2,3) and active=true"]) if !@comment_presents.blank?
+  end
+  
+  def list_comment
+    
   end
 end

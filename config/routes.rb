@@ -2,6 +2,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :hrs
   map.fresh_list '/freshers', :controller => 'hrs', :action => 'index'
   map.exp_list '/experiance', :controller => 'hrs', :action => 'experience_list'
+  map.all_comments '/comments', :controller => 'admins',:action=>"list_comment"
+  map.today_comment '/today_comment', :controller => 'admins',:action=>"comment"
+  
   #map.connect 'Mail_to',:controller=>"admins",:action=>"send_mail" 
   map.resource :log, :controller => "logs", :member => "backup"
 

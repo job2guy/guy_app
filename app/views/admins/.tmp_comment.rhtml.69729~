@@ -1,0 +1,15 @@
+<%title "Today's Comments"%>
+<%if !@comment_presents.blank?%>
+   <% for comment in @comment_presents %>
+   		<%if comment.user.active%>
+  			<b><%= comment.user.name.capitalize %></b><br/>
+  			<ul>
+			  <li><%=truncate(comment.body, 45, "..... (more)")%></li>
+			</ul>
+  			<hr />
+		<% end %>
+	<% end %>
+<%else%>
+	No Comment from users<br/><br/><hr />
+<% end %>
+<%=link_to "View All Comments", all_comments_url%>

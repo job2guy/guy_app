@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100709103631) do
+ActiveRecord::Schema.define(:version => 20100920141208) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -47,16 +47,16 @@ ActiveRecord::Schema.define(:version => 20100709103631) do
   end
 
   create_table "member_details", :force => true do |t|
-    t.integer  "user_id",                                            :null => false
+    t.integer  "user_id",                               :null => false
     t.date     "dob"
-    t.integer  "age",             :limit => 2
-    t.boolean  "gender",                       :default => true
-    t.string   "qualification",                                      :null => false
-    t.text     "address",                                            :null => false
-    t.string   "relationship",                 :default => "friend"
-    t.boolean  "job_status",                   :default => false
+    t.integer  "age"
+    t.boolean  "gender",          :default => true
+    t.string   "qualification",                         :null => false
+    t.text     "address",                               :null => false
+    t.string   "relationship",    :default => "friend"
+    t.boolean  "job_status",      :default => false
     t.text     "resume"
-    t.boolean  "work_status",                  :default => false
+    t.boolean  "work_status",     :default => false
     t.text     "lang_experiance"
     t.string   "company_name"
     t.datetime "created_at"
