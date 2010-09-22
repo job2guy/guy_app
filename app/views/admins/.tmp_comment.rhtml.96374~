@@ -2,18 +2,17 @@
 <%=link_to "View All Comments", all_comments_url%><br/><br/>
 <%if !@comment_presents.blank?%>
 	<%if !@users.blank?%>
-	<%i=1%>
 	   <% for user in @users %>
-	  		<%=i%>.<b><%=user.name.capitalize%></b><br/>
+	  		<b><%=user.name.capitalize%></b><br/>
 			<%@comment_presents=Comment.find(:all,:conditions=>["user_id=? and date(created_at)=?",user.id,Time.now.strftime("%Y-%m-%d")],:order=>"created_at desc")%>
+			<%if !@comment_presents.blank?%>
 				<ul>
 				<%for comment in @comment_presents%>
-					<li><%#=truncate(comment.body, 50, "..... (more)")%> 
-					<%=comment.body%>- <i><%=comment.created_at.strftime("%I:%M:%S %p")%></i></li>
+					<li><%=truncate(comment.body, 50, "..... (more)")%> - <i><%=comment.created_at.strftime("%I:%M:%S %p")%></i></li>
 				<%end%>
 				</ul>
+			<%end%>
 	  		<hr />
-			<%i+=1%>
 		<%end%>
 	<%end%>
 <%else%>

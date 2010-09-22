@@ -1,7 +1,7 @@
 <h3>Comments</h3>
 <%= form_tag({:controller=>"blogs" , :action => "comment" }, {:onsubmit=>"self.parent.location.reload(true);"})%>
 <p>
-   <%= text_area "comment", "body" ,:size=>"15x8" ,:id=>"comment_id"%> </p>
+   <%= text_area "comment", "body" ,:size=>"13x6" ,:id=>"comment_id"%> </p>
 <p><span id="commenterror"></span>
 </p>
    

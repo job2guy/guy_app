@@ -71,11 +71,21 @@ class AdminsController < ApplicationController
   end
   
   def comment
+    users_id=[]
     @comment_presents=Comment.find(:all,:conditions=>["date(created_at)=?",Time.now.strftime("%Y-%m-%d")])
-    @users=User.find(:all,:conditions=>["id not in (1,2,3) and active=true"]) if !@comment_presents.blank?
+    @comment_presents.each do |comment|
+      users_id << comment.user_id
+    end
+    @users_ids=users_id.uniq! - [1,2,3]
+    @users=User.find(:all,:conditions=>["id in (#{@users_ids * ","}) and active=true"]) if !@comment_presents.blank?
   end
   
   def list_comment
-    
+    users_id=[]
+    @comment_presents=Comment.all
+    @comment_presents.each do |comment|
+      users_id << comment.user_id
+    end
+    @users_ids=users_id.uniq! - [1,2,3]
   end
 end

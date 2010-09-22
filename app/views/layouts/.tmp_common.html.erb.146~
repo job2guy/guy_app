@@ -16,7 +16,7 @@
                 <li class="sliding-element"><a href="<%=member_details_path%>">Home</a></li>
 				<li class="sliding-element"><a href="<%=new_member_detail_path%>">Apply Job / Add your Details</a></li>
                 <li class="sliding-element"><a href="<%=account_path.to_s+'?flag=common'%>">My Profile</a></li>
-				<li class="sliding-element"><a href="/blogs/show?placeValuesBeforeTB_=savedValues&TB_iframe=true&height=280&width=150&modal=true" class="thickbox">Comments</a></li>
+				<li class="sliding-element"><a href="/blogs/show?placeValuesBeforeTB_=savedValues&TB_iframe=true&height=250&width=130&modal=true" class="thickbox">Comments</a></li>
                 <li class="sliding-element"><a href="/logout">Logout</a></li>
             </ul>
         </div>

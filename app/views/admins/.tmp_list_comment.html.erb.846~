@@ -1,0 +1,21 @@
+<%title "List of Comments"%>
+<%=link_to "Today's Comment", today_comment_url%><br/><br/>
+<%if !Comment.first.blank?%>
+	<%@users=User.find(:all,:conditions=>["id not in (1,2,3) and active=true"])
+	if !@users.blank?%>
+	   <% for user in @users %>
+	   	<b><%=user.name.capitalize %></b><br/>
+		  <%@comment_presents=Comment.find(:all,:conditions=>["user_id=?",user.id],:order=>"created_at desc")%>
+	      	<%if !@comment_presents.blank?%>
+			<ul>
+				<%for comment in @comment_presents%>
+					<li><%=truncate(comment.body, 50, "..... (more)")%> - <i><%=comment.created_at.strftime("%d-%m-%Y %I:%M:%S %p")%></i></li>
+				<%end%>
+			</ul>
+			<%end%>
+		<%end%>
+			<hr />
+	<%end%>			
+<%else%>
+	No Comment<br/><br/><hr />
+<% end %>
