@@ -1,0 +1,20 @@
+body {
+	margin-left: 0px;
+	margin-right: 0px;
+	background-color: #616161;
+}
+
+#layer01_holder {
+	width:563px;
+	height:157px;
+	margin:auto;
+}
+
+#layer01_holder #center {
+	width:220px;
+	height:157px;
+	float:left;
+	display:block;
+}
+
+
