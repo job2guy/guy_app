@@ -76,8 +76,13 @@ class AdminsController < ApplicationController
     @comment_presents.each do |comment|
       users_id << comment.user_id
     end
-    @users_ids=users_id.uniq! - [1,2,3]
-    @users=User.find(:all,:conditions=>["id in (#{@users_ids * ","}) and active=true"]) if !@comment_presents.blank?
+    
+    if !users_id.blank?
+      @users_ids=(users_id.uniq! - [1,2,3])
+      @users=User.find(:all,:conditions=>["id in (#{@users_ids * ","}) and active=true"]) if !@comment_presents.blank?
+    else
+      @users=User.find(:all,:conditions=>["active=true"]) if !@comment_presents.blank?
+    end
   end
   
   def list_comment
